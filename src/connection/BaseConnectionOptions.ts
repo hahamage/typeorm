@@ -86,6 +86,11 @@ export interface BaseConnectionOptions {
     readonly synchronize?: boolean;
 
     /**
+     * Indicates if should remove columns not exist in new entity definition when synchronize
+     */
+    readonly removeColumnsNotExist?: boolean;
+
+    /**
      * Indicates if migrations should be auto run on every application launch.
      * Alternative to it, you can use CLI and run migrations:run command.
      */

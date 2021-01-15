@@ -160,9 +160,9 @@ export class RdbmsSchemaBuilder implements SchemaBuilder {
         await this.dropOldExclusions();
         await this.dropCompositeUniqueConstraints();
         // await this.renameTables();
-        await this.renameColumns();
+        if (this.connection.options.removeColumnsNotExist) await this.renameColumns();
         await this.createNewTables();
-        await this.dropRemovedColumns();
+        if (this.connection.options.removeColumnsNotExist) await this.dropRemovedColumns();
         await this.addNewColumns();
         await this.updatePrimaryKeys();
         await this.updateExistColumns();
